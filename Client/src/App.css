@@ -1,0 +1,6 @@
+@font-face { font-family: Inter; src: url('../public/inter-font/Inter-Regular.ttf'); }
+
+h1 {
+    font-family: "Inter";
+    font-size: 2.5em
+}
