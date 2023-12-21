@@ -1,6 +1,7 @@
 import './App.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import Artist from "./Artist.js";
 
 function App() {
   return (
@@ -16,9 +17,14 @@ function App() {
           <FontAwesomeIcon icon={faSearch} className='search-icon'/>
           <input type="text" />
         </div>
+        <div className="search-results">
+          <Artist/>
+          <Artist/>
+          <Artist/>
+          <Artist/>
+        </div>
       </div>
       <div className="subscriptions-box">
-        <p>World</p>
       </div>
     </div>
   );
