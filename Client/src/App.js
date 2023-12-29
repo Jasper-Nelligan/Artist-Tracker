@@ -18,19 +18,19 @@ function App() {
           <input type="text" placeholder="Search for an artist"/>
         </div>
         <div className="search-results">
-          <Artist/>
-          <Artist/>
-          <Artist/>
-          <Artist/>
+          <Artist showSubscribeBtn={true}/>
+          <Artist showSubscribeBtn={true}/>
+          <Artist showSubscribeBtn={true}/>
+          <Artist showSubscribeBtn={true}/>
         </div>
       </div>
       <div className="subscriptions-box">
         <h3 className="subscriptions-title">Subscriptions</h3>
         <div className="search-results">
-          <Artist/>
-          <Artist/>
-          <Artist/>
-          <Artist/>
+          <Artist showSubscribeBtn={false}/>
+          <Artist showSubscribeBtn={false}/>
+          <Artist showSubscribeBtn={false}/>
+          <Artist showSubscribeBtn={false}/>
         </div>
       </div>
     </div>
