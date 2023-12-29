@@ -5,6 +5,7 @@
     align-items: center;
     text-align: center;
     padding-top: 5%;
+    background: linear-gradient(#c0473c, #e96342, #692124, #a07d5f, #b49677, #473833)
 }
 
 .new-release-img {
