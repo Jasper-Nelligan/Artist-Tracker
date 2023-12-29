@@ -15,7 +15,7 @@ function App() {
       <div className="search-box">
         <div className="search-bar">
           <FontAwesomeIcon icon={faSearch} className='search-icon'/>
-          <input type="text" />
+          <input type="text" placeholder="Search for an artist"/>
         </div>
         <div className="search-results">
           <Artist/>
