@@ -1,13 +1,11 @@
 @font-face { font-family: Inter; src: url('../public/inter-font/Inter-Regular.ttf'); }
 
-h1 {
+body {
     font-family: "Inter";
+}
+h1 {
     font-size: 2.5em;
     line-height: 0em;
-}
-
-p {
-    font-family: "Inter";
 }
 
 input {
@@ -32,13 +30,13 @@ input {
     text-align: right;
 }
 
-
 .search-box {
     grid-column: 2;
     grid-row: 2;
     border: 1px solid black;
     background-color: #F5F5F5;
-    padding: 0.5em; /* Add padding for spacing */
+    padding: 0.5em;
+    margin-bottom: 20px;
 }
 
 .search-bar {
@@ -70,9 +68,17 @@ input {
     grid-column: 2;
     grid-row: 3;
     border: 1px solid black;
+    padding: 0px 20px;
+    background-color: #F5F5F5;
 }
 
 .search-results {
     overflow-y: scroll;
     height: 200px;
+}
+
+.subscriptions-title {
+    text-align: center;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
 }

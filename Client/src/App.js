@@ -25,6 +25,13 @@ function App() {
         </div>
       </div>
       <div className="subscriptions-box">
+        <h3 className="subscriptions-title">Subscriptions</h3>
+        <div className="search-results">
+          <Artist/>
+          <Artist/>
+          <Artist/>
+          <Artist/>
+        </div>
       </div>
     </div>
   );
