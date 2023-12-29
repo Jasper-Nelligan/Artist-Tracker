@@ -23,6 +23,17 @@ input {
     grid-row: 2 / span 2;
 }
 
+.new-releases-grid {
+    display: inline-grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-gap: 1em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    width: 90%;
+    grid-column: 1;
+    grid-row: 3 / span 2;
+}
+
 .account {
     grid-column: 1 / span 2;
     grid-row: 1;

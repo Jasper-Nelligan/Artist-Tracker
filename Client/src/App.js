@@ -2,12 +2,18 @@ import './App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Artist from "./Artist.js";
+import NewRelease from './NewRelease.js'
 
 function App() {
   return (
     <div className="app-container">
       <div className="new-releases-title">
         <h1>New Releases</h1>
+      </div>
+      <div className="new-releases-grid">
+        <NewRelease/>
+        <NewRelease/>
+        <NewRelease/>
       </div>
       <div className="account">
         <p>example@gmail.com</p>
