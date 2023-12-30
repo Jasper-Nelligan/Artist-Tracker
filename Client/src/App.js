@@ -14,6 +14,7 @@ function App() {
           <NewRelease/>
           <NewRelease/>
         </div>
+        <iframe width="100%" height="150" src="https://embed.odesli.co/?url=spotify:album:0VXbDPN8qoDpUm9CaTP1X7&theme=light" frameborder="0" allowtransparency allowfullscreen sandbox="allow-same-origin allow-scripts allow-presentation allow-popups allow-popups-to-escape-sandbox"></iframe>
       </div>
       <div className="account">
         <p>example@gmail.com</p>
