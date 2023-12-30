@@ -12,7 +12,9 @@ function NewRelease() {
             <ColorExtractor getColors={colors => setImgColor(colors)}>
                 <img className="new-release-img" src={albumCover} alt="TODO"/>
             </ColorExtractor>
-            <p>Hello World</p>
+            <p>OK Orchestra</p>
+            <p>Album by AJR</p>
+            <p>Get links</p>
         </div>
     )
 }

@@ -7,13 +7,13 @@ import NewRelease from './NewRelease.js'
 function App() {
   return (
     <div className="app-container">
-      <div className="new-releases-title">
-        <h1>New Releases</h1>
-      </div>
-      <div className="new-releases-grid">
-        <NewRelease/>
-        <NewRelease/>
-        <NewRelease/>
+      <div>
+        <h1 className="new-releases-title">New Releases</h1>
+        <div className="new-releases-grid">
+          <NewRelease/>
+          <NewRelease/>
+          <NewRelease/>
+        </div>
       </div>
       <div className="account">
         <p>example@gmail.com</p>

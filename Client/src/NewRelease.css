@@ -1,14 +1,15 @@
 .new-release-container {
-    background-color: grey;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     text-align: center;
     padding-top: 5%;
-    background: linear-gradient(#c0473c, #e96342, #692124, #a07d5f, #b49677, #473833)
+    background: linear-gradient(#c0473c, #e96342, #692124, #a07d5f, #b49677, #473833);
+    border-radius: 5%;
 }
 
 .new-release-img {
     max-height: 90%;
     max-width: 90%;
+}
+
+.new-release-container p {
+    margin: 5px 0;
 }
