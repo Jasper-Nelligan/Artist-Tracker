@@ -2,9 +2,28 @@ import './App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Artist from "./Artist.js";
-import NewRelease from './NewRelease.js'
+import NewRelease from './NewRelease.js';
+import { useEffect } from 'react';
 
 function App() {
+  useEffect(() => {
+    const backendUrl = 'http://localhost:3001/api';
+
+    fetch(`${backendUrl}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Data from the backend:', data);
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+  }, []);
+
   return (
     <div className="app-container">
       <div>

@@ -1,85 +1,66 @@
 require('dotenv').config();
-var http = require('http');
-const { stringify } = require('querystring');
-var SpotifyWebApi = require('spotify-web-api-node');
+const express = require('express');
+const cors = require("cors");
+const SpotifyWebApi = require('spotify-web-api-node');
 
 const spotifyApi = new SpotifyWebApi({
     clientId: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET
+    clientSecret: process.env.CLIENT_SECRET,
 });
 
-http.createServer(async function (req, res) {
-    // Save the access token so that it's used in future calls
-    spotifyApi.setAccessToken(await getAccessToken());
+const app = express();
+const PORT = process.env.PORT || 3001;
+app.use(cors());
 
-    const artistId = await getArtistId('AJR');
+app.get("/api", async (req, res) => {
+    try {
+        // // Save the access token so that it's used in future calls
+        // const accessToken = await getAccessToken();
+        // spotifyApi.setAccessToken(accessToken);
 
-    const latestReleases = await getLatestReleases('2022-07-06', artistId);
+        // const artistId = await getArtistId('AJR');
+        // const latestReleases = await getLatestReleases('2022-07-06', artistId);
 
-    res.writeHead(200, {'Content-Type': 'application/json'});
-    res.write(JSON.stringify(latestReleases))
-    res.end();
-}).listen(8080);
+        // res.status(200).json(latestReleases);
+        console.log("Request received"); // Add this line
+        res.status(200).json( {messsage: "Hello World"} );
+    } catch (error) {
+        console.error('Error in /api:', error.message);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 
-/**
- * Returns a promise containing access token
- */
+app.listen(PORT, () => {
+    console.log(`Server listening on ${PORT}`);
+});
+
 async function getAccessToken() {
-    return spotifyApi.clientCredentialsGrant().then(
-        function(data) {
-            return data.body['access_token'];
-        },
-        function(err) {
-            console.log('Something went wrong when retrieving an access token', err);
-        }
-    );
+    try {
+        const data = await spotifyApi.clientCredentialsGrant();
+        return data.body['access_token'];
+    } catch (error) {
+        console.error('Error when retrieving an access token:', error.message);
+        throw error;
+    }
 }
 
-/**
- * Returns a promise containing the artist's id
- * @param {String} artist 
- */
 async function getArtistId(artist) {
-    return spotifyApi.searchArtists(artist).then(
-        function(data) {
-            return(data.body.artists.items[0].id);
-    },  function(err) {
-            console.error(err);
-    });
+    try {
+        const data = await spotifyApi.searchArtists(artist);
+        return data.body.artists.items[0].id;
+    } catch (error) {
+        console.error('Error when retrieving artist ID:', error.message);
+        throw error;
+    }
 }
 
-// '2022-07-29'
 async function getLatestReleases(lastDateChecked, artistId) {
-    // const currentDate = getCurrentDate();
-
-    // Get artist's releases
-    const releases = await spotifyApi.getArtistAlbums(artistId).then(
-        async function(data) {
-            return data.body.items;
-        },
-        function(err) {
-            console.error(err);
-        }
-    )
-
-    const newReleases = [];
-
-    // TODO what happens when release date precision is less than a day?
-    releases.forEach(release => {
-        if (release.release_date > lastDateChecked) {
-            newReleases.push(release)
-        }
-    });
-
-    return newReleases;
+    try {
+        const releases = await spotifyApi.getArtistAlbums(artistId);
+        const newReleases = releases.body.items.filter(release => release.release_date > lastDateChecked);
+        return newReleases;
+    } catch (error) {
+        console.error('Error when retrieving latest releases:', error.message);
+        throw error;
+    }
 }
-
-function getCurrentDate() {
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
-
-    return(yyyy + '-' + mm + '-' + dd);
-}
-
