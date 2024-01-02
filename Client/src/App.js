@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 
 function App() {
   useEffect(() => {
-    const backendUrl = 'http://localhost:3001/api';
+    const backendUrl = 'http://localhost:3001/api/new-releases';
 
     fetch(`${backendUrl}`, {
         method: 'GET',

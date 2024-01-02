@@ -12,18 +12,16 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 app.use(cors());
 
-app.get("/api", async (req, res) => {
+app.get("/api/new-releases", async (req, res) => {
     try {
-        // // Save the access token so that it's used in future calls
-        // const accessToken = await getAccessToken();
-        // spotifyApi.setAccessToken(accessToken);
+        // Save the access token so that it's used in future calls
+        const accessToken = await getAccessToken();
+        spotifyApi.setAccessToken(accessToken);
 
-        // const artistId = await getArtistId('AJR');
-        // const latestReleases = await getLatestReleases('2022-07-06', artistId);
+        const artistId = await getArtistId('AJR');
+        const latestReleases = await getLatestReleases('2022-07-06', artistId);
 
-        // res.status(200).json(latestReleases);
-        console.log("Request received"); // Add this line
-        res.status(200).json( {messsage: "Hello World"} );
+        res.status(200).json(latestReleases);
     } catch (error) {
         console.error('Error in /api:', error.message);
         res.status(500).json({ error: 'Internal Server Error' });
