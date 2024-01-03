@@ -94,8 +94,3 @@ input {
     width: 50%;
     border-color: orange;
 }
-
-.new-releases-date > p {
-    color: orange;
-    margin-bottom: 5px;
-}

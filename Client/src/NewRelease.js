@@ -3,17 +3,16 @@ import { useState } from "react";
 import albumCover from './images/OK_Orchestra Album Cover.png';
 import { ColorExtractor } from 'react-color-extractor';
 
-function NewRelease() {
+function NewRelease({name, type, artist, albumCoverURL}) {
     const [imgColor, setImgColor] = useState();
 
-    console.log(imgColor);
     return (
         <div className="new-release-container">
             <ColorExtractor getColors={colors => setImgColor(colors)}>
-                <img className="new-release-img" src={albumCover} alt="TODO"/>
+                <img className="new-release-img" src={albumCoverURL} alt="TODO"/>
             </ColorExtractor>
-            <p>OK Orchestra</p>
-            <p>Album by AJR</p>
+            <p>{name}</p>
+            <p>{type} by {artist}</p>
             <p>Get links</p>
         </div>
     )
