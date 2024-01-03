@@ -20,11 +20,7 @@ function App() {
     })
     .then(response => response.json())
     .then(data => {
-      let newReleasesArray = [];
-      Object.keys(data).forEach(function(key, index) {
-        newReleasesArray.push(data[key]);
-      })
-        setNewReleases(newReleasesArray);
+        setNewReleases(data);
     })
     .catch(error => {
         console.error('Error fetching data:', error);
