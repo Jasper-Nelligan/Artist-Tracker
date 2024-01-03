@@ -19,7 +19,6 @@ function NewReleasesSection({newReleases}) {
 function createNewSection(newRelease) {
     let {release_date, name, album_type, artists, images} = newRelease;
     let elements = [];
-    console.log(release_date)
     elements.push(<NewReleaseDate date={release_date}/>)
     
     let release = <NewRelease
