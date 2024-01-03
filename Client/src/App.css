@@ -23,15 +23,6 @@ input {
     grid-row: 2 / span 2;
 }
 
-.new-releases-grid {
-    display: inline-grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    grid-gap: 1em;
-    width: 90%;
-    grid-column: 1;
-    grid-row: 3 / span 2;
-}
-
 .account {
     grid-column: 1 / span 2;
     grid-row: 1;
@@ -86,11 +77,4 @@ input {
 .subscriptions-title {
     text-align: center;
     padding-bottom: 10px;
-}
-
-.new-releases-date {
-    border-bottom: 2px solid black;
-    margin-bottom: 20px;
-    width: 50%;
-    border-color: orange;
 }

@@ -1,7 +1,7 @@
-function NewReleaseDate(date) {
+function NewReleaseDate({date}) {
     return (
         <div className="new-releases-date">
-            <p>Oct 1, 2023  NEW!</p>
+            <p>{date}</p>
         </div>
     )
 }

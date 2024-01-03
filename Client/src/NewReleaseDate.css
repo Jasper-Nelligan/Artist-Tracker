@@ -2,3 +2,10 @@
     color: orange;
     margin-bottom: 5px;
 }
+
+.new-releases-date {
+    border-bottom: 2px solid black;
+    margin-bottom: 20px;
+    width: 50%;
+    border-color: orange;
+}

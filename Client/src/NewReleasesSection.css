@@ -1,0 +1,8 @@
+.new-releases-grid {
+    display: inline-grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-gap: 1em;
+    width: 90%;
+    grid-column: 1;
+    grid-row: 3 / span 2;
+}

@@ -5,6 +5,7 @@ import Artist from "./Artist.js";
 import NewRelease from './NewRelease.js';
 import { useEffect, useState } from 'react';
 import NewReleaseDate from './NewReleaseDate.js';
+import NewReleasesSection from './NewReleasesSection.js';
 
 function App() {
   const [newReleases, setNewReleases] = useState([]);
@@ -42,7 +43,8 @@ function App() {
     <div className="app-container">
       <div>
         <h1 className="new-releases-title">New Releases</h1>
-        <div className="new-releases-section">
+        <NewReleasesSection newReleases={newReleases}/>
+        {/* <div className="new-releases-section">
           <NewReleaseDate/>
           <div className="new-releases-grid">
             {renderNewReleases()}
@@ -52,8 +54,8 @@ function App() {
           <NewReleaseDate/>
           <div className="new-releases-grid">
           </div>
-        </div>
-        /* <iframe width="100%" height="150" src="https://embed.odesli.co/?url=spotify:album:0VXbDPN8qoDpUm9CaTP1X7&theme=light" frameborder="0" allowtransparency allowfullscreen sandbox="allow-same-origin allow-scripts allow-presentation allow-popups allow-popups-to-escape-sandbox"></iframe> */
+        </div> */}
+        <iframe width="100%" height="150" src="https://embed.odesli.co/?url=spotify:album:0VXbDPN8qoDpUm9CaTP1X7&theme=light" frameborder="0" allowtransparency allowfullscreen sandbox="allow-same-origin allow-scripts allow-presentation allow-popups allow-popups-to-escape-sandbox"></iframe>
       </div>
       <div className="account">
         <p>example@gmail.com</p>
