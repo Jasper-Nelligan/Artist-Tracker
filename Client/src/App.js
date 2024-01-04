@@ -43,17 +43,6 @@ function App() {
       <div>
         <h1 className="new-releases-title">New Releases</h1>
         <NewReleasesSection newReleases={newReleases}/>
-        {/* <div className="new-releases-section">
-          <NewReleaseDate/>
-          <div className="new-releases-grid">
-            {renderNewReleases()}
-          </div>
-        </div>
-        <div className="new-releases-section">
-          <NewReleaseDate/>
-          <div className="new-releases-grid">
-          </div>
-        </div> */}
         <iframe width="100%" height="150" src="https://embed.odesli.co/?url=spotify:album:0VXbDPN8qoDpUm9CaTP1X7&theme=light" frameborder="0" allowtransparency allowfullscreen sandbox="allow-same-origin allow-scripts allow-presentation allow-popups allow-popups-to-escape-sandbox"></iframe>
       </div>
       <div className="account">
@@ -91,53 +80,3 @@ function sortNewReleaseData(newReleaseData) {
 }
 
 export default App;
-
-/*
-{
-    "album_group": "album",
-    "album_type": "album",
-    "artists": [
-        {
-            "external_urls": {
-                "spotify": "https://open.spotify.com/artist/6s22t5Y3prQHyaHWUN1R1C"
-            },
-            "href": "https://api.spotify.com/v1/artists/6s22t5Y3prQHyaHWUN1R1C",
-            "id": "6s22t5Y3prQHyaHWUN1R1C",
-            "name": "AJR",
-            "type": "artist",
-            "uri": "spotify:artist:6s22t5Y3prQHyaHWUN1R1C"
-        }
-    ],
-    "available_markets": [
-        "XK"
-    ],
-    "external_urls": {
-        "spotify": "https://open.spotify.com/album/1bU12iHHt5ujHbuKcIGlpm"
-    },
-    "href": "https://api.spotify.com/v1/albums/1bU12iHHt5ujHbuKcIGlpm",
-    "id": "1bU12iHHt5ujHbuKcIGlpm",
-    "images": [
-        {
-            "height": 640,
-            "url": "https://i.scdn.co/image/ab67616d0000b27304a3ca0d3bf91c88f969f905",
-            "width": 640
-        },
-        {
-            "height": 300,
-            "url": "https://i.scdn.co/image/ab67616d00001e0204a3ca0d3bf91c88f969f905",
-            "width": 300
-        },
-        {
-            "height": 64,
-            "url": "https://i.scdn.co/image/ab67616d0000485104a3ca0d3bf91c88f969f905",
-            "width": 64
-        }
-    ],
-    "name": "The Maybe Man",
-    "release_date": "2023-11-10",
-    "release_date_precision": "day",
-    "total_tracks": 12,
-    "type": "album",
-    "uri": "spotify:album:1bU12iHHt5ujHbuKcIGlpm"
-}
-*/
