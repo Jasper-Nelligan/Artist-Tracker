@@ -18,10 +18,16 @@ app.get("/api/new-releases", async (req, res) => {
         const accessToken = await getAccessToken();
         spotifyApi.setAccessToken(accessToken);
 
-        const artistId = await getArtistId('AJR');
-        const latestReleases = await getLatestReleases('2022-07-06', artistId);
+        const artists = ['AJR', 'Barns Courtney'];
+        let allLatestReleases = [];
 
-        res.status(200).json(latestReleases);
+        for (const artist of artists) {
+            const artistId = await getArtistId(artist);
+            const latestReleases = await getLatestReleases('2022-07-06', artistId);
+            allLatestReleases.push(latestReleases);
+        }
+        
+        res.status(200).json(allLatestReleases);
     } catch (error) {
         console.error('Error in /api:', error.message);
         res.status(500).json({ error: 'Internal Server Error' });

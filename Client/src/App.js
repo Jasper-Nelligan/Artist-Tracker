@@ -4,7 +4,6 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Artist from "./Artist.js";
 import NewRelease from './NewRelease.js';
 import { useEffect, useState } from 'react';
-import NewReleaseDate from './NewReleaseDate.js';
 import NewReleasesSection from './NewReleasesSection.js';
 
 function App() {
@@ -20,8 +19,8 @@ function App() {
         },
     })
     .then(response => response.json())
-    .then(data => {
-        setNewReleases(data);
+    .then(newReleaseData => {
+        setNewReleases(sortNewReleaseData(newReleaseData));
     })
     .catch(error => {
         console.error('Error fetching data:', error);
@@ -83,6 +82,14 @@ function App() {
       </div>
     </div>
   );
+}
+
+function sortNewReleaseData(newReleaseData) {
+  newReleaseData = newReleaseData[0].concat(newReleaseData[1]);
+  console.log(newReleaseData)
+  newReleaseData = newReleaseData.sort((e1, e2) => e1.release_date < e2.release_date ? 1 : -1)
+  console.log(newReleaseData)
+  return (newReleaseData)
 }
 
 export default App;
