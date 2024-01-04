@@ -86,9 +86,7 @@ function App() {
 
 function sortNewReleaseData(newReleaseData) {
   newReleaseData = newReleaseData[0].concat(newReleaseData[1]);
-  console.log(newReleaseData)
   newReleaseData = newReleaseData.sort((e1, e2) => e1.release_date < e2.release_date ? 1 : -1)
-  console.log(newReleaseData)
   return (newReleaseData)
 }
 
