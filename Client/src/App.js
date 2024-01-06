@@ -7,6 +7,8 @@ import { useEffect, useState } from 'react';
 import NewReleasesSection from './NewReleasesSection.js';
 
 function App() {
+  // TODO rename showLinksModal to something better?
+  const [showLinksModal, setShowLinksModal] = useState(null);
   const [newReleases, setNewReleases] = useState([]);
 
   useEffect(() => {
@@ -27,23 +29,34 @@ function App() {
     });
   }, []);
 
-  const renderNewReleases = () => {
-    return newReleases.map(({ album_type, artists, images, release_date, uri, name}) => (
-      <NewRelease
-        name={name}
-        type={album_type}
-        artist={artists[0].name}
-        albumCoverURL={images[0].url}
-      />
-    ))
+  const renderLinksModal = () => {
+    if (showLinksModal !== null) {
+      return (
+        <div className="modal" id="modal">
+          <div className="modal-content">
+            <button
+              className="modal-close-button"
+              aria-label="Close"
+              onClick={() => setShowLinksModal(null)}
+              >
+                &times;
+            </button>
+            <div>
+              <iframe width="100%" height="150" src={"https://embed.odesli.co/?url=" + showLinksModal + "&theme=light"} frameborder="0" allowtransparency allowfullscreen sandbox="allow-same-origin allow-scripts allow-presentation allow-popups allow-popups-to-escape-sandbox"></iframe>
+            </div>
+          </div>
+        </div>
+      )
+    }
   }
 
   return (
     <div className="app-container">
       <div>
         <h1 className="new-releases-title">New Releases</h1>
-        <NewReleasesSection newReleases={newReleases}/>
-        <iframe width="100%" height="150" src="https://embed.odesli.co/?url=spotify:album:0VXbDPN8qoDpUm9CaTP1X7&theme=light" frameborder="0" allowtransparency allowfullscreen sandbox="allow-same-origin allow-scripts allow-presentation allow-popups allow-popups-to-escape-sandbox"></iframe>
+        <NewReleasesSection
+          newReleases={newReleases}
+          onGetLinks={(uri) => setShowLinksModal(uri)}/>
       </div>
       <div className="account">
         <p>example@gmail.com</p>
@@ -69,6 +82,7 @@ function App() {
           <Artist showSubscribeBtn={false}/>
         </div>
       </div>
+      {renderLinksModal()}
     </div>
   );
 }

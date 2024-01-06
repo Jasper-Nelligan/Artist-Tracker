@@ -3,15 +3,15 @@ import NewRelease from "./NewRelease";
 import NewReleaseDate from "./NewReleaseDate";
 import './NewReleasesSection.css';
 
-function NewReleasesSection({newReleases}) {
+function NewReleasesSection({newReleases, onGetLinks}) {
     let sections = [];
     if (newReleases.length > 0) {
         console.log(newReleases[0])
-        let elements = [createNewReleaseElement(newReleases[0])];
+        let elements = [createNewReleaseElement(newReleases[0], onGetLinks)];
         for (let i = 1; i < newReleases.length; i++) {
             console.log(newReleases[i])
             if (newReleases[i].release_date === newReleases[i-1].release_date || elements.length === 0) {
-                elements.push(createNewReleaseElement(newReleases[i]));
+                elements.push(createNewReleaseElement(newReleases[i], onGetLinks));
             } else {
                 sections.push(createNewSection(elements, newReleases[i-1]))
                 elements = [];
@@ -22,13 +22,14 @@ function NewReleasesSection({newReleases}) {
     return sections;
 }
 
-function createNewReleaseElement(newRelease) {
-    let {name, album_type, artists, images} = newRelease;
+function createNewReleaseElement(newRelease, onGetLinks) {
+    let {name, album_type, artists, images, uri} = newRelease;
     let release = <NewRelease
         name={name}
         type={album_type}
         artist={artists[0].name}
-        albumCoverURL={images[0].url}/>
+        albumCoverURL={images[0].url}
+        onGetLinks={() => onGetLinks(uri)}/>
     return release;
 }
 
