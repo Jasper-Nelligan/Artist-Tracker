@@ -17,6 +17,7 @@ function NewRelease({name, type, artist, albumCoverURL, onGetLinks}) {
 					<p>{name}</p>
 					<p>{type} by {artist}</p>
 					<a
+							href=""
 							onClick={(event) => {
 									event.preventDefault();
 									onGetLinks();
