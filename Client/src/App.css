@@ -1,4 +1,7 @@
-@font-face { font-family: Inter; src: url('../public/inter-font/Inter-Regular.ttf'); }
+@font-face {
+    font-family: Inter;
+    src: url('../public/inter-font/Inter-Regular.ttf');
+}
 
 body {
     font-family: "Inter";
@@ -30,11 +33,14 @@ input {
 }
 
 .search-box {
+    margin-bottom: 20px;
+    background-color: #F5F5F5;
+    padding: 10px;
+}
+
+.side-bar {
     grid-column: 2;
     grid-row: 2;
-    background-color: #F5F5F5;
-    padding: 0.5em;
-    margin-bottom: 20px;
 }
 
 .search-bar {
@@ -48,9 +54,10 @@ input {
     display: flex;
     align-items: center;
     padding: 5px;
+    margin-bottom: 10px;
 }
 
-.search-bar > input {
+.search-bar>input {
     flex: 1;
     height: 1em;
     border: none;
@@ -63,20 +70,19 @@ input {
 }
 
 .subscriptions-box {
-    grid-column: 2;
-    grid-row: 3;
-    padding: 0px 20px;
     background-color: #F5F5F5;
+    padding: 10px;
 }
 
 .search-results {
     overflow-y: scroll;
-    height: 200px;
+    height: 400px;
 }
 
 .subscriptions-title {
     text-align: center;
     padding-bottom: 10px;
+    border-bottom: 1px solid black;
 }
 
 .modal {
@@ -88,7 +94,7 @@ input {
     top: 0;
     width: 100%;
     z-index: 8;
-  }
+}
 
 .modal-content {
     margin: 6.25em auto;
@@ -110,6 +116,6 @@ input {
 
 .modal-close-button:hover,
 .modal-close-button:focus {
-  cursor: default;
-  background: #961a12;
+    cursor: default;
+    background: #961a12;
 }
