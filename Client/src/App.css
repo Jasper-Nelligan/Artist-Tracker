@@ -106,4 +106,10 @@ input {
     padding: 5px;
     text-decoration: none;
     border: none;
-  }
+}
+
+.modal-close-button:hover,
+.modal-close-button:focus {
+  cursor: default;
+  background: #961a12;
+}
