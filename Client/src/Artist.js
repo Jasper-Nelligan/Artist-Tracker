@@ -1,15 +1,17 @@
 import './Artist.css';
+import blankProfilePic from './images/blank-profile-picture.png';
 
 function Artist({showSubscribeBtn, name, images}) {
-    console.log(images)
-    var imageURL;
+    var image;
     if (images && images.length !== 0 ) {
-        imageURL = images[0].url;
+        image = images[0].url;
+    } else {
+        image = blankProfilePic;
     }
     return(
         <div className="artist-entry">
             <div className="align">
-                <img className="artist-pfp" src={imageURL} alt={`${name} profile picture`}/>
+                <img className="artist-pfp" src={image} alt={`${name} profile picture`}/>
                 <p>{name}</p>
             </div>
             {
