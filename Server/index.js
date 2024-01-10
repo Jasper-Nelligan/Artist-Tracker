@@ -40,7 +40,6 @@ app.get("/api/search-artists/", async (req, res) => {
         
         if (req.query.searchInput) {
             const searchResults = await searchArtists(req.query.searchInput);
-            console.log(searchResults)
             res.status(200).json(searchResults);
         }
     } catch (error) {
