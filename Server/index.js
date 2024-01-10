@@ -12,9 +12,8 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 app.use(cors());
 
-app.get("/api/new-releases", async (req, res) => {
+app.get("/api/new-releases/", async (req, res) => {
     try {
-        // Save the access token so that it's used in future calls
         const accessToken = await getAccessToken();
         spotifyApi.setAccessToken(accessToken);
 
@@ -36,9 +35,14 @@ app.get("/api/new-releases", async (req, res) => {
 
 app.get("/api/search-artists/", async (req, res) => {
     try {
-        console.log("Request was: ", req.query.searchInput)
+        const accessToken = await getAccessToken();
+        spotifyApi.setAccessToken(accessToken);
         
-        //res.status(200).json(allLatestReleases);
+        if (req.query.searchInput) {
+            const searchResults = await searchArtists(req.query.searchInput);
+            console.log(searchResults)
+            res.status(200).json(searchResults);
+        }
     } catch (error) {
         console.error('Error in /api:', error.message);
         res.status(500).json({ error: 'Internal Server Error' });
@@ -65,6 +69,16 @@ async function getArtistId(artist) {
         return data.body.artists.items[0].id;
     } catch (error) {
         console.error('Error when retrieving artist ID:', error.message);
+        throw error;
+    }
+}
+
+async function searchArtists(artist) {
+    try {
+        const data = await spotifyApi.searchArtists(artist);
+        return data.body.artists;
+    } catch (error) {
+        console.error('Error when searching for artist:', error.message);
         throw error;
     }
 }

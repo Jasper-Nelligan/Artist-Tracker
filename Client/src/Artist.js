@@ -1,12 +1,16 @@
 import './Artist.css';
-import AJR_PFP from "./images/AJR.jpg";
 
-function Artist({showSubscribeBtn}) {
+function Artist({showSubscribeBtn, name, images}) {
+    console.log(images)
+    var imageURL;
+    if (images && images.length !== 0 ) {
+        imageURL = images[0].url;
+    }
     return(
         <div className="artist-entry">
             <div className="align">
-                <img className="artist-pfp" src={AJR_PFP} alt="AJR Profile Pic"/>
-                <p>AJR</p>
+                <img className="artist-pfp" src={imageURL} alt={`${name} profile picture`}/>
+                <p>{name}</p>
             </div>
             {
                 showSubscribeBtn &&

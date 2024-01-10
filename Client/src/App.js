@@ -2,7 +2,6 @@ import './App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Artist from "./Artist.js";
-import NewRelease from './NewRelease.js';
 import { useEffect, useState } from 'react';
 import NewReleasesSection from './NewReleasesSection.js';
 
@@ -12,9 +11,10 @@ function App() {
   const [newReleases, setNewReleases] = useState([]);
   const [currentSearchInput, setCurrentSearchInput] = useState('');
   const [enteredSearchInput, setEnteredSearchInput] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
-    const backendUrl = 'http://localhost:3001/api/new-releases';
+    const backendUrl = new URL('http://localhost:3001/api/new-releases');
 
     fetch(`${backendUrl}`, {
         method: 'GET',
@@ -43,8 +43,8 @@ function App() {
         }
     })
     .then(response => response.json())
-    .then(newReleaseData => {
-        //setNewReleases(sortNewReleaseData(newReleaseData));
+    .then(searchResults => {
+        setSearchResults(searchResults.items);
     })
     .catch(error => {
         console.error('Error fetching data:', error);
@@ -84,6 +84,15 @@ function App() {
     }
   }
 
+  const renderSearchResults = () => {
+    return searchResults.map(({name, images}) => (
+      <Artist
+        showSubscribeBtn={true}
+        name={name}
+        images={images}/>
+    ))
+  }
+
   return (
     <div className="app-container">
       <div>
@@ -108,10 +117,7 @@ function App() {
               onKeyDown={handleKeyDown}/>
           </div>
           <div className="search-results">
-            <Artist showSubscribeBtn={true}/>
-            <Artist showSubscribeBtn={true}/>
-            <Artist showSubscribeBtn={true}/>
-            <Artist showSubscribeBtn={true}/>
+            {renderSearchResults()}
           </div>
         </div>
         <div className="subscriptions-box">
