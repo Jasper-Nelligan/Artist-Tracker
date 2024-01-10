@@ -1,7 +1,6 @@
 import './NewReleaseDate.css'
 
 function NewReleaseDate({date}) {
-    console.log(date)
     var [YYYY, MM, DD] = date.split('-')
     // Subtract 1 from month since JavaScript counts months from 0
     var dateObj = new Date(YYYY, MM - 1, DD);

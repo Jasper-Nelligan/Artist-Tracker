@@ -6,10 +6,8 @@ import './NewReleasesSection.css';
 function NewReleasesSection({newReleases, onGetLinks}) {
     let sections = [];
     if (newReleases.length > 0) {
-        console.log(newReleases[0])
         let elements = [createNewReleaseElement(newReleases[0], onGetLinks)];
         for (let i = 1; i < newReleases.length; i++) {
-            console.log(newReleases[i])
             if (newReleases[i].release_date === newReleases[i-1].release_date || elements.length === 0) {
                 elements.push(createNewReleaseElement(newReleases[i], onGetLinks));
             } else {

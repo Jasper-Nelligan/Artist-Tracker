@@ -10,6 +10,8 @@ function App() {
   // TODO rename showLinksModal to something better?
   const [showLinksModal, setShowLinksModal] = useState(null);
   const [newReleases, setNewReleases] = useState([]);
+  const [currentSearchInput, setCurrentSearchInput] = useState('');
+  const [enteredSearchInput, setEnteredSearchInput] = useState('');
 
   useEffect(() => {
     const backendUrl = 'http://localhost:3001/api/new-releases';
@@ -28,6 +30,38 @@ function App() {
         console.error('Error fetching data:', error);
     });
   }, []);
+
+  useEffect(() => {
+    var backendUrl = new URL('http://localhost:3001/api/search-artists/');
+    var params = {searchInput: currentSearchInput}
+    backendUrl.search = new URLSearchParams(params).toString();
+
+    fetch(`${backendUrl}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(response => response.json())
+    .then(newReleaseData => {
+        //setNewReleases(sortNewReleaseData(newReleaseData));
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+  }, [enteredSearchInput]);
+
+  const searchItems = (searchValue) => {
+    setCurrentSearchInput(searchValue)
+  }
+
+  const handleKeyDown = (e) => {
+    // If Enter is pressed
+    if (e.keyCode == 13) {
+      setEnteredSearchInput(currentSearchInput);
+    }
+
+  }
 
   const renderLinksModal = () => {
     if (showLinksModal !== null) {
@@ -61,11 +95,17 @@ function App() {
       <div className="account">
         <p>example@gmail.com</p>
       </div>
+      {/* TODO rename class to side-panels */}
       <div className="side-bar">
         <div className="search-box">
+          {/* TODO create seperate classes for these side panels */}
           <div className="search-bar">
             <FontAwesomeIcon icon={faSearch} className='search-icon'/>
-            <input type="text" placeholder="Search for an artist"/>
+            <input
+              type="text"
+              placeholder="Search for an artist"
+              onChange={(e) => searchItems(e.target.value)}
+              onKeyDown={handleKeyDown}/>
           </div>
           <div className="search-results">
             <Artist showSubscribeBtn={true}/>

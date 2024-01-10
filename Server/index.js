@@ -34,6 +34,17 @@ app.get("/api/new-releases", async (req, res) => {
     }
 });
 
+app.get("/api/search-artists/", async (req, res) => {
+    try {
+        console.log("Request was: ", req.query.searchInput)
+        
+        //res.status(200).json(allLatestReleases);
+    } catch (error) {
+        console.error('Error in /api:', error.message);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
 });
