@@ -1,4 +1,4 @@
-import './NewReleaseDate.css'
+import '../style/NewReleaseDate.css'
 
 function NewReleaseDate({date}) {
     var [YYYY, MM, DD] = date.split('-')

@@ -1,5 +1,5 @@
-import './Artist.css';
-import blankProfilePic from './images/blank-profile-picture.png';
+import '../style/Artist.css';
+import blankProfilePic from '../images/blank-profile-picture.png';
 
 function Artist({showSubscribeBtn, name, images}) {
     var image;

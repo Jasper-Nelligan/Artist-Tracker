@@ -1,9 +1,9 @@
-import './App.css';
+import '../style/App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Artist from "./Artist.js";
-import { useEffect, useState } from 'react';
 import NewReleasesSection from './NewReleasesSection.js';
+import { useEffect, useState } from 'react';
 
 function App() {
   // TODO rename showLinksModal to something better?

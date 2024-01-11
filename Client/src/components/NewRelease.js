@@ -1,4 +1,4 @@
-import './NewRelease.css';
+import '../style/NewRelease.css';
 import { useState } from "react";
 import { ColorExtractor } from 'react-color-extractor';
 

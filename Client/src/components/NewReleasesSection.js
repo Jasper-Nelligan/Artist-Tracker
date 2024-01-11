@@ -1,7 +1,7 @@
 import React from "react";
 import NewRelease from "./NewRelease";
 import NewReleaseDate from "./NewReleaseDate";
-import './NewReleasesSection.css';
+import '../style/NewReleasesSection.css';
 
 function NewReleasesSection({newReleases, onGetLinks}) {
     let sections = [];
