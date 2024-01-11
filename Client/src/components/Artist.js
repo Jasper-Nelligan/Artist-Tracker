@@ -2,12 +2,8 @@ import '../style/Artist.css';
 import blankProfilePic from '../images/blank-profile-picture.png';
 
 function Artist({showSubscribeBtn, name, images}) {
-    var image;
-    if (images && images.length !== 0 ) {
-        image = images[0].url;
-    } else {
-        image = blankProfilePic;
-    }
+    const image = images && images.length !== 0 ? images[0].url : blankProfilePic;
+    
     return(
         <div className="artist-entry">
             <div className="align">
