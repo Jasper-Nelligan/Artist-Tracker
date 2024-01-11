@@ -1,0 +1,15 @@
+.subscriptions-box {
+    background-color: #F5F5F5;
+    padding: 10px;
+}
+
+.subscriptions-title {
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+}
+
+.search-results {
+    overflow-y: scroll;
+    height: 400px;
+}
