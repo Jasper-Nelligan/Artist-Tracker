@@ -58,9 +58,11 @@ function App() {
   const handleKeyDown = (e) => {
     // If Enter is pressed
     if (e.keyCode == 13) {
+      if (currentSearchInput === '') {
+        setSearchResults([])
+      }
       setEnteredSearchInput(currentSearchInput);
     }
-
   }
 
   const renderLinksModal = () => {
