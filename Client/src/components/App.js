@@ -5,7 +5,7 @@ import SubscriptionsPanel from './SubscriptionsPanel.js';
 import NewReleasesSection from './NewReleasesSection.js';
 
 function App() {
-  const [showLinksModal, setShowLinksModal] = useState(null);
+  const [linksModalUri, setLinksModalUri] = useState(null);
   const [newReleases, setNewReleases] = useState([]);
 
   useEffect(() => {
@@ -27,19 +27,19 @@ function App() {
   }, []);
 
   const renderLinksModal = () => {
-    if (showLinksModal !== null) {
+    if (linksModalUri !== null) {
       return (
         <div className="modal" id="modal">
           <div className="modal-content">
             <button
               className="modal-close-button"
               aria-label="Close"
-              onClick={() => setShowLinksModal(null)}
+              onClick={() => setLinksModalUri(null)}
               >
                 &times;
             </button>
             <div>
-              <iframe width="100%" height="150" src={"https://embed.odesli.co/?url=" + showLinksModal + "&theme=light"} frameborder="0" allowtransparency allowfullscreen sandbox="allow-same-origin allow-scripts allow-presentation allow-popups allow-popups-to-escape-sandbox"></iframe>
+              <iframe width="100%" height="150" src={"https://embed.odesli.co/?url=" + linksModalUri + "&theme=light"} frameborder="0" allowtransparency allowfullscreen sandbox="allow-same-origin allow-scripts allow-presentation allow-popups allow-popups-to-escape-sandbox"></iframe>
             </div>
           </div>
         </div>
@@ -53,7 +53,7 @@ function App() {
         <h1 className="new-releases-title">New Releases</h1>
         <NewReleasesSection
           newReleases={newReleases}
-          onGetLinks={(uri) => setShowLinksModal(uri)}/>
+          onGetLinks={(uri) => setLinksModalUri(uri)}/>
       </div>
       <div className="account">
         <p>example@gmail.com</p>
