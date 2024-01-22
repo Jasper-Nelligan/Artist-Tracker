@@ -7,7 +7,9 @@ import NewReleasesSection from './NewReleasesSection.js';
 function App() {
   const [linksModalUri, setLinksModalUri] = useState(null);
   const [newReleases, setNewReleases] = useState([]);
+  const [artists, setNewArtists] = useState([]);
 
+  // Fetch new releases from backend
   useEffect(() => {
     const backendUrl = new URL('http://localhost:3001/api/new-releases');
 
@@ -25,6 +27,23 @@ function App() {
         console.error('Error fetching data:', error);
     });
   }, []);
+
+  useEffect(() => {
+    const artists = JSON.parse(localStorage.getItem("artists"));
+
+    if (artists) {
+      console.log(artists)
+    } else {
+      console.log("Error: artist data from localStorage could not be fetched")
+    }
+  }, []);
+
+  const addArtist = (newArtist) => {
+    let updatedArtists = artists;
+    updatedArtists.push(newArtist);
+    setNewArtists(updatedArtists);
+    localStorage.setItem("artists", JSON.stringify(updatedArtists));
+  }
 
   const renderLinksModal = () => {
     if (linksModalUri !== null) {
@@ -59,7 +78,7 @@ function App() {
         <p>example@gmail.com</p>
       </div>
       <div className="side-panels">
-        <SearchPanel/>
+        <SearchPanel addArtist={addArtist}/>
         <SubscriptionsPanel/>
       </div>
       {renderLinksModal()}

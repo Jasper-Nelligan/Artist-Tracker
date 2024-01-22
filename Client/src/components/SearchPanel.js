@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Artist from "./Artist.js";
 import '../style/SearchPanel.css';
 
-function SearchPanel() {
+function SearchPanel({addArtist}) {
     const [currentSearchInput, setCurrentSearchInput] = useState('');
     const [enteredSearchInput, setEnteredSearchInput] = useState('');
     const [searchResults, setSearchResults] = useState([]);
@@ -34,7 +34,8 @@ function SearchPanel() {
           <Artist
             showSubscribeBtn={true}
             name={name}
-            images={images}/>
+            images={images}
+            addArtist={addArtist}/>
         ))
     }
 
@@ -44,7 +45,7 @@ function SearchPanel() {
 
     const handleKeyDown = (e) => {
         // If Enter is pressed
-        if (e.keyCode == 13) {
+        if (e.keyCode === 13) {
           if (currentSearchInput === '') {
             setSearchResults([])
           }
