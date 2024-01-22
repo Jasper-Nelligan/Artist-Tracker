@@ -25,3 +25,7 @@
     border-radius: 10px;
     margin-right: 10px;
 }
+
+.subscribe-btn:hover {
+    background-color: #139eb0;
+}
